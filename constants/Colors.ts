@@ -9,15 +9,15 @@ export const Colors = {
     secondaryLight: '#60A5FA',
     
     background: '#000000ff',
-    backgroundElevated: 'rgba(19, 19, 19)',
-    backgroundCard: 'rgba(19, 19, 19)',
+    backgroundElevated: 'rgb(19, 19, 19)',
+    backgroundCard: 'rgb(19, 19, 19)',
     
     surface: '#697565',
     surfaceHover: '#697565',
     
     text: '#ECDFCC',
     textSecondary: '#ECDFCC',
-    textMuted: '#817665ff',
+    textMuted: '#ecdcbfff',
     
     accent: '#EC4899',
     accentGreen: '#10B981',

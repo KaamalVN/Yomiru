@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import Animated, { FadeInUp, FadeOutDown } from 'react-native-reanimated';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';  // Change this
 import { Colors } from '@/constants/Colors';
 import * as Haptics from 'expo-haptics';
 import { BlurView } from 'expo-blur';
@@ -41,7 +41,7 @@ export const BottomControls: React.FC<BottomControlsProps> = ({
   };
 
   return (
-    <Animated.View entering={FadeInUp.duration(300)} exiting={FadeOutDown.duration(300)} style={[styles.container, { paddingBottom: insets.bottom }]} >
+    <Animated.View entering={FadeInUp.duration(300)} exiting={FadeOutDown.duration(300)} style={[styles.container, { paddingBottom: insets.bottom }]}>
       <BlurView intensity={80} tint="dark" style={styles.blur}>
         <View style={styles.controls}>
           <TouchableOpacity
@@ -49,10 +49,10 @@ export const BottomControls: React.FC<BottomControlsProps> = ({
             onPress={() => handlePress(onTranslatePress)}
             activeOpacity={0.7}
           >
-            <IconSymbol
-              name="character.book.closed"
+            <Ionicons
+              name="book-outline"
               size={24}
-              color={translationEnabled ? Colors.yomiru.primary : Colors.yomiru.textSecondary}
+              color={Colors.yomiru.textSecondary}
             />
             <Text style={styles.buttonLabel}>Translate</Text>
             <Text style={styles.buttonSubLabel}>
@@ -65,10 +65,10 @@ export const BottomControls: React.FC<BottomControlsProps> = ({
             onPress={() => handlePress(onColorizePress)}
             activeOpacity={0.7}
           >
-            <IconSymbol
-              name="paintpalette"
+            <Ionicons
+              name="color-palette-outline"
               size={24}
-              color={colorizationEnabled ? Colors.yomiru.accent : Colors.yomiru.textSecondary}
+              color={Colors.yomiru.textSecondary}
             />
             <Text style={styles.buttonLabel}>Colorizer</Text>
             <Text style={styles.buttonSubLabel}>{colorizationEnabled ? 'ON' : 'OFF'}</Text>
@@ -80,14 +80,15 @@ export const BottomControls: React.FC<BottomControlsProps> = ({
             activeOpacity={0.7}
             disabled={isProcessing}
           >
-            <IconSymbol
-              name="play.circle.fill"
+            <Ionicons
+              name="play-circle"
               size={28}
               color={isProcessing ? Colors.yomiru.textMuted : Colors.yomiru.accentGreen}
             />
             <Text style={[styles.buttonLabel, isProcessing && styles.buttonLabelDisabled]}>
               {isProcessing ? 'Processing...' : 'Execute'}
             </Text>
+            <Text style={styles.buttonSubLabel}> </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -95,14 +96,23 @@ export const BottomControls: React.FC<BottomControlsProps> = ({
             onPress={() => handlePress(onSettingsPress)}
             activeOpacity={0.7}
           >
-            <IconSymbol name="gearshape.fill" size={24} color={Colors.yomiru.textSecondary} />
+            <Ionicons 
+              name="settings" 
+              size={24} 
+              color={Colors.yomiru.textSecondary} 
+            />
             <Text style={styles.buttonLabel}>Settings</Text>
+            <Text style={styles.buttonSubLabel}> </Text>
           </TouchableOpacity>
         </View>
       </BlurView>
     </Animated.View>
   );
 };
+
+
+// ... keep your existing styles
+
 
 const styles = StyleSheet.create({
   container: {
