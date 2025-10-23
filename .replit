@@ -84,5 +84,23 @@ waitForPort = 5000
 [workflows.workflow.metadata]
 outputType = "webview"
 
+[[workflows.workflow]]
+name = "EAS Publish Preview Android Clear Cache"
+mode = "sequential"
+author = 37160091
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "eas build --platform android --profile preview --clear-cache"
+
+[[workflows.workflow]]
+name = "Blur View"
+mode = "sequential"
+author = 37160091
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx expo install expo-blur@latest"
+
 [agent]
 expertMode = true
