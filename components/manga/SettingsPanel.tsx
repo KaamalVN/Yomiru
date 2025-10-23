@@ -18,6 +18,7 @@ import { StorageService } from '@/utils/storage';
 import Toast from 'react-native-toast-message';
 import * as Haptics from 'expo-haptics';
 import { Button } from './Button';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface SettingsPanelProps {
   visible: boolean;
@@ -33,6 +34,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   onSave,
 }) => {
   const [localSettings, setLocalSettings] = useState<MangaSettings>(settings);
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     setLocalSettings(settings);
@@ -64,7 +66,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     <Modal visible={visible} transparent animationType="none" onRequestClose={onClose}>
       <Animated.View entering={FadeIn} style={styles.overlay}>
         <TouchableOpacity style={styles.backdrop} onPress={onClose} activeOpacity={1} />
-        <Animated.View entering={SlideInDown} exiting={SlideOutDown} style={styles.panel}>
+        <Animated.View entering={SlideInDown} exiting={SlideOutDown} style={[styles.panel, {paddingBottom: insets.bottom,maxHeight: `80%`}]}>
           <View style={styles.header}>
             <Text style={styles.title}>Settings</Text>
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
@@ -222,7 +224,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.yomiru.backgroundCard,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    maxHeight: '85%',
     ...Platform.select({
       ios: {
         shadowColor: '#000',

@@ -5,6 +5,7 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Colors } from '@/constants/Colors';
 import * as Haptics from 'expo-haptics';
 import { BlurView } from 'expo-blur';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface BottomControlsProps {
   visible: boolean;
@@ -31,6 +32,7 @@ export const BottomControls: React.FC<BottomControlsProps> = ({
   onSettingsPress,
   isProcessing = false,
 }) => {
+  const insets = useSafeAreaInsets();
   if (!visible) return null;
 
   const handlePress = (callback: () => void) => {
@@ -39,7 +41,7 @@ export const BottomControls: React.FC<BottomControlsProps> = ({
   };
 
   return (
-    <Animated.View entering={FadeInUp.duration(300)} exiting={FadeOutDown.duration(300)} style={styles.container}>
+    <Animated.View entering={FadeInUp.duration(300)} exiting={FadeOutDown.duration(300)} style={[styles.container, { paddingBottom: insets.bottom }]} >
       <BlurView intensity={80} tint="dark" style={styles.blur}>
         <View style={styles.controls}>
           <TouchableOpacity
@@ -109,17 +111,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 100,
-    ...Platform.select({
-      ios: {
-        paddingBottom: 20,
-      },
-      android: {
-        paddingBottom: 10,
-      },
-      default: {
-        paddingBottom: 0,
-      },
-    }),
   },
   blur: {
     overflow: 'hidden',
