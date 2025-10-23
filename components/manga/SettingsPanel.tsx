@@ -66,7 +66,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
     <Modal visible={visible} transparent animationType="none" onRequestClose={onClose}>
       <Animated.View entering={FadeIn} style={styles.overlay}>
         <TouchableOpacity style={styles.backdrop} onPress={onClose} activeOpacity={1} />
-        <Animated.View entering={SlideInDown} exiting={SlideOutDown} style={[styles.panel, {paddingBottom: insets.bottom,maxHeight: `80%`}]}>
+        <Animated.View entering={SlideInDown} exiting={SlideOutDown} style={[styles.panel, {paddingBottom: insets.bottom,maxHeight: `85%`}]}>
           <View style={styles.header}>
             <Text style={styles.title}>Settings</Text>
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
@@ -189,7 +189,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 value={localSettings.apiKey}
                 onChangeText={(text) => setLocalSettings({ ...localSettings, apiKey: text })}
                 placeholder="Enter your API key"
-                placeholderTextColor={Colors.yomiru.textMuted}
+                placeholderTextColor={Colors.yomiru.text}
                 secureTextEntry
               />
               <Text style={styles.label}>Backend Endpoint URL</Text>
@@ -198,7 +198,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 value={localSettings.backendEndpoint}
                 onChangeText={(text) => setLocalSettings({ ...localSettings, backendEndpoint: text })}
                 placeholder="https://your-backend.modal.run"
-                placeholderTextColor={Colors.yomiru.textMuted}
+                placeholderTextColor={Colors.yomiru.text}
               />
             </View>
           </ScrollView>
@@ -224,6 +224,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.yomiru.backgroundCard,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
+    minHeight: '80%',
     ...Platform.select({
       ios: {
         shadowColor: '#000',

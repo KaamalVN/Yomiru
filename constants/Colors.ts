@@ -1,23 +1,23 @@
 export const Colors = {
   yomiru: {
-    primary: '#8B5CF6',
-    primaryDark: '#7C3AED',
-    primaryLight: '#A78BFA',
+    primary: 'rgb(105, 117, 101)',
+    primaryDark: 'rgba(70, 81, 67, 1)',
+    primaryLight: 'rgba(127, 142, 122, 1)',
     
     secondary: '#3B82F6',
     secondaryDark: '#2563EB',
     secondaryLight: '#60A5FA',
     
-    background: '#0F0F1A',
-    backgroundElevated: '#1A1A2E',
-    backgroundCard: '#252540',
+    background: '#000000ff',
+    backgroundElevated: 'rgba(19, 19, 19)',
+    backgroundCard: 'rgba(19, 19, 19)',
     
-    surface: '#2A2A45',
-    surfaceHover: '#34345A',
+    surface: '#697565',
+    surfaceHover: '#697565',
     
-    text: '#E8E8F0',
-    textSecondary: '#A8A8C0',
-    textMuted: '#6B6B8A',
+    text: '#ECDFCC',
+    textSecondary: '#ECDFCC',
+    textMuted: '#817665ff',
     
     accent: '#EC4899',
     accentGreen: '#10B981',
@@ -31,7 +31,7 @@ export const Colors = {
     warning: '#F59E0B',
     info: '#3B82F6',
     
-    overlay: 'rgba(15, 15, 26, 0.85)',
+    overlay: 'rgba(60, 61, 55, 0.1)',
     overlayDark: 'rgba(10, 10, 18, 0.95)',
     
     shadow: 'rgba(0, 0, 0, 0.5)',
